@@ -9,3 +9,8 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+
+
+//github에 올라갈 때는 node_modules는 올라가지 않음
+//타 pc에서 실행할 때는 npm install (package.json에 따라 설치됨)
