@@ -1,7 +1,7 @@
-import React, { use } from 'react'
-import { useState } from 'react';
+import React from 'react'
+import { useState } from 'react'
 
-export default function UseState05() {
+export default function UseState08() {
     const [todos, setTodos] = useState([]);
     const [inputVal, setInputVal] = useState("");
 
@@ -13,6 +13,7 @@ export default function UseState05() {
         setTodos((prev) => [...prev, inputVal]);
         setInputVal("");
     };
+    console.log(todos[0] && 1);
 
     return (
         <div>
@@ -22,15 +23,14 @@ export default function UseState05() {
                 onChange={handleChangeInput}
                 placeholder='TO-DO 입력'
             />
-            <button onClick={addTodoClick}>TO-DO 추가</button>
+            <button onClick={addTodoClick}>할 일 추가</button>
+            {!todos[0] && <p>할 일 없음</p>}
             <ul>
-                {todos.map((todo, i) => {
-                    //원래 key로 index를 넣으면 안됨
-                    //리액트가 리스트로 렌더링할 때
-                    //실제 데이터 기준이 아니라
-                    //key 기준으로 변경을 감지함
-                    return <li key={i}>{todo}</li>
-                })}
+                {
+                    todos[0] && todos.map((todo, i) => {
+                        return <li key={i}>{todo}</li>
+                    })
+                }
             </ul>
         </div>
     )
